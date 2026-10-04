@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StudySync</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <div id="loader" class="loader-screen">
+    <div class="loader-content">
+
+        <div class="loader-logo">
+            📘
+        </div>
+
+        <h1>StudySync</h1>
+
+        <p>Loading your dashboard...</p>
+
+        <div class="loader-bar">
+            <div class="loader-progress"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- LOGIN SCREEN -->
+
+<div id="loginScreen" class="login-screen">
+
+<div class="login-card">
+
+<div class="logo-circle">
+📚
+</div>
+
+<h1>StudySync</h1>
+
+<p class="tagline">
+One Dashboard. Every Student's Daily Companion.
+</p>
+
+<div class="login-form">
+
+<input
+type="text"
+id="studentName"
+placeholder="Enter your name">
+
+<input
+type="password"
+id="studentPassword"
+placeholder="Password ">
+
+<button id="loginBtn" onclick="login()">
+Enter Dashboard →
+</button>
+
+</div> <!-- CLOSE login-form -->
+
+</div> <!-- CLOSE login-card -->
+
+</div> <!-- CLOSE login-screen -->
+
+<!-- MAIN APP -->
+
+<div id="app" class="app hidden">
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+<div class="sidebar-header">
+
+<div class="sidebar-logo">
+📘
+</div>
+
+<div>
+
+<h2>StudySync</h2>
+
+<span>Student Platform</span>
+
+</div>
+
+</div>
+
+<nav class="nav-menu">
+
+<button class="nav-btn active" onclick="showPage('dashboard')">
+🏠 Dashboard
+</button>
+
+<button class="nav-btn" onclick="showPage('attendance')">
+📊 Attendance
+</button>
+
+<button class="nav-btn" onclick="showPage('homework')">
+📝 Homework
+</button>
+
+<button class="nav-btn" onclick="showPage('marks')">
+📈 Marks
+</button>
+
+<button class="nav-btn" onclick="showPage('timer')">
+⏱️ Study Timer
+</button>
+
+<button class="nav-btn" onclick="showPage('calendar')">
+📅 Calendar
+</button>
+
+<button class="nav-btn" onclick="showPage('notes')">
+📌 Notes
+</button>
+
+<button class="nav-btn" onclick="showPage('countdown')">
+🚀 Exam Countdown
+</button>
+
+<button class="nav-btn" onclick="showPage('profile')">
+👤 Profile
+</button>
+
+</nav>
+
+<div class="sidebar-footer">
+
+<button class="theme-btn" onclick="toggleDarkMode()">
+🌙 Dark Mode
+</button>
+
+</div>
+
+</aside>
+
+<!-- MAIN CONTENT -->
+
+<main class="main-content">
+
+<!-- TOP BAR -->
+
+<header class="topbar">
+
+<div>
+
+<h1 id="welcomeText">
+Welcome 👋
+</h1>
+
+<p id="todayDate">
+Today's Date
+</p>
+<p id="liveClock">00:00:00</p>
+
+</div>
+
+<div class="topbar-right">
+
+<div class="search-box">
+
+<input
+type="text"
+placeholder="Search features...">
+
+</div>
+
+<div class="notification">
+🔔
+<span class="notification-dot"></span>
+</div>
+
+</div>
+
+</header>
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="page active-page">
+
+<h2 class="section-title">
+Dashboard Overview
+</h2>
+
+<p class="section-subtitle">
+Everything you need for your studies in one place.
+</p>
+
+<!-- ANALYTICS CARDS -->
+
+<div class="dashboard-grid">
+
+<div class="dashboard-card">
+
+<div class="card-icon blue">
+📊
+</div>
+
+<div class="card-content">
+
+<h3 id="dashboardAttendance">
+0%
+</h3>
+
+<p>Attendance</p>
+
+</div>
+
+</div>
+
+<div class="dashboard-card">
+
+<div class="card-icon green">
+📝
+</div>
+
+<div class="card-content">
+
+<h3 id="dashboardHomework">
+0
+</h3>
+
+<p>Pending Homework</p>
+
+</div>
+
+</div>
+
+<div class="dashboard-card">
+
+<div class="card-icon orange">
+🔥
+</div>
+
+<div class="card-content">
+
+<h3 id="dashboardStreak">
+1
+</h3>
+
+<p>Study Streak</p>
+
+</div>
+
+</div>
+
+<div class="dashboard-card">
+
+<div class="card-icon purple">
+⏱️
+</div>
+
+<div class="card-content">
+
+<h3>25 min</h3>
+
+<p>Pomodoro</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- QUICK ACTIONS -->
+
+<h3 class="mini-title">
+Quick Actions
+</h3>
+
+<div class="quick-actions">
+
+<button onclick="showPage('attendance')">
+📊 Attendance
+</button>
+
+<button onclick="showPage('homework')">
+📝 Add Homework
+</button>
+
+<button onclick="showPage('marks')">
+📈 Marks
+</button>
+
+<button onclick="showPage('timer')">
+⏱️ Start Timer
+</button>
+
+</div>
+
+<!-- LIVE ACTIVITY -->
+
+<div class="activity-card">
+
+<h3>Today's Focus</h3>
+
+<div class="activity-list">
+
+<div class="activity-item">
+<span>📚 Complete Homework</span>
+</div>
+
+<div class="activity-item">
+<span>⏱️ 25-Minute Study Session</span>
+</div>
+
+<div class="activity-item">
+<span>📅 Check Upcoming Exams</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- MOTIVATION -->
+
+<div class="quote-card">
+
+<p id="dailyQuote">
+"Small progress every day leads to big results."
+</p>
+
+<span>Daily Motivation</span>
+
+</div>
+
+</section>
+
+<!-- PART 2 STARTS BELOW THIS -->
+ <!-- ========================= -->
+<!-- ATTENDANCE PAGE -->
+<!-- ========================= -->
+
+<section id="attendance" class="page">
+
+  <h2 class="section-title">Attendance Calculator</h2>
+
+  <p class="section-subtitle">
+    Calculate your attendance, safe absences, and required classes instantly.
+  </p>
+
+  <div class="attendance-layout">
+
+    <div class="attendance-card">
+
+      <div class="circle-wrapper">
+
+        <div id="attendanceCircle" class="attendance-circle">
+          <span id="attendancePercent">0%</span>
+        </div>
+
+      </div>
+
+      <div class="attendance-form">
+
+        <label>Classes Attended</label>
+
+        <input
+          type="number"
+          id="attended"
+          placeholder="Enter attended classes">
+
+        <label>Total Classes</label>
+
+        <input
+          type="number"
+          id="total"
+          placeholder="Enter total classes">
+
+        <button onclick="attendanceCalc()">
+          Calculate Attendance
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="attendance-results">
+
+      <div class="info-box green">
+
+        <h3>Status</h3>
+
+        <p id="attendanceStatus">Ready</p>
+
+      </div>
+
+      <div class="info-box blue">
+
+        <h3>Safe Absences</h3>
+
+        <p id="safeAbsences">0</p>
+
+      </div>
+
+      <div class="info-box orange">
+
+        <h3>Classes Needed</h3>
+
+        <p id="classesNeeded">0</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- HOMEWORK PAGE -->
+<!-- ========================= -->
+
+<section id="homework" class="page">
+
+  <h2 class="section-title">Homework Manager</h2>
+
+  <p class="section-subtitle">
+    Organize assignments and mark them complete.
+  </p>
+
+  <div class="homework-container">
+
+    <div class="homework-inputs">
+
+      <input
+        id="taskInput"
+        type="text"
+        placeholder="Homework Title">
+
+      <input
+        id="subjectInput"
+        type="text"
+        placeholder="Subject">
+
+      <input
+        id="dueDate"
+        type="date">
+
+      <button onclick="addTask()">
+        ➕ Add Homework
+      </button>
+
+    </div>
+
+    <div class="task-section">
+
+      <h3>Pending Tasks</h3>
+
+      <ul id="taskList"></ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- MARKS PAGE -->
+<!-- ========================= -->
+
+<section id="marks" class="page">
+
+  <h2 class="section-title">Marks Calculator</h2>
+
+  <p class="section-subtitle">
+    Calculate your overall percentage and grade.
+  </p>
+
+  <div class="marks-grid">
+
+    <div class="marks-card">
+
+      <h3>Enter Marks</h3>
+
+      <div class="subject-row">
+        <span>Maths</span>
+        <input id="mathsMarks" type="number" placeholder="/100">
+      </div>
+
+      <div class="subject-row">
+        <span>Science</span>
+        <input id="scienceMarks" type="number" placeholder="/100">
+      </div>
+
+      <div class="subject-row">
+        <span>English</span>
+        <input id="englishMarks" type="number" placeholder="/100">
+      </div>
+
+      <div class="subject-row">
+        <span>Social Science</span>
+        <input id="sstMarks" type="number" placeholder="/100">
+      </div>
+
+      <div class="subject-row">
+        <span>Gujarati</span>
+        <input id="gujaratiMarks" type="number" placeholder="/100">
+      </div>
+
+      <button onclick="marksCalc()">
+        Calculate Result
+      </button>
+
+    </div>
+
+    <div class="marks-card">
+
+      <h3>Your Result</h3>
+
+      <div class="result-box">
+
+        <div class="result-item">
+
+          <h4>Percentage</h4>
+
+          <p id="marksResult">0%</p>
+
+        </div>
+
+        <div class="result-item">
+
+          <h4>Grade</h4>
+
+          <p id="gradeResult">-</p>
+
+        </div>
+
+        <div class="result-item">
+
+          <h4>Total</h4>
+
+          <p id="totalMarks">0 / 500</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- POMODORO PAGE -->
+<!-- ========================= -->
+
+<section id="timer" class="page">
+
+  <h2 class="section-title">Pomodoro Timer</h2>
+
+  <p class="section-subtitle">
+    Stay focused using the 25-minute study method.
+  </p>
+
+  <div class="timer-container">
+
+    <div class="timer-circle">
+
+      <h1 id="time">
+        25:00
+      </h1>
+
+    </div>
+
+    <div class="timer-buttons">
+
+      <button onclick="startTimer()">
+        ▶ Start
+      </button>
+
+      <button onclick="pauseTimer()">
+        ⏸ Pause
+      </button>
+
+      <button onclick="resetTimer()">
+        🔄 Reset
+      </button>
+
+    </div>
+
+    <div class="timer-info">
+
+      <div class="timer-card">
+        <h3>Session</h3>
+        <p>25 min</p>
+      </div>
+
+      <div class="timer-card">
+        <h3>Break</h3>
+        <p>5 min</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- CALENDAR PAGE -->
+<!-- ========================= -->
+
+<section id="calendar" class="page">
+
+  <h2 class="section-title">Study Calendar</h2>
+
+  <p class="section-subtitle">
+    Plan your month and remember important dates.
+  </p>
+
+  <div class="calendar-card">
+
+    <div class="calendar-header">
+
+      <button onclick="previousMonth()">
+        ◀
+      </button>
+
+      <h3 id="monthYear">
+        September 2026
+      </h3>
+
+      <button onclick="nextMonth()">
+        ▶
+      </button>
+
+    </div>
+
+    <div class="calendar-weekdays">
+
+      <span>Sun</span>
+      <span>Mon</span>
+      <span>Tue</span>
+      <span>Wed</span>
+      <span>Thu</span>
+      <span>Fri</span>
+      <span>Sat</span>
+
+    </div>
+
+    <div id="calendarGrid" class="calendar-grid">
+
+      <!-- Days generated by JavaScript -->
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PART 3 STARTS BELOW THIS -->
+ <!-- ========================= -->
+<!-- NOTES PAGE -->
+<!-- ========================= -->
+
+<section id="notes" class="page">
+
+  <h2 class="section-title">Quick Notes</h2>
+
+  <p class="section-subtitle">
+    Save important reminders while studying.
+  </p>
+
+  <div class="notes-container">
+
+    <div class="notes-input">
+
+      <textarea
+        id="noteInput"
+        placeholder="Write something important..."></textarea>
+
+      <button onclick="addNote()">
+        📌 Save Note
+      </button>
+
+    </div>
+
+    <div id="notesGrid" class="notes-grid">
+
+      <!-- Notes appear here -->
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- EXAM COUNTDOWN -->
+<!-- ========================= -->
+
+<section id="countdown" class="page">
+
+  <h2 class="section-title">Exam Countdown</h2>
+
+  <p class="section-subtitle">
+    Never lose track of upcoming exams.
+  </p>
+
+  <div class="countdown-container">
+
+    <div class="countdown-card">
+
+      <h3>Science Exam</h3>
+
+      <p id="scienceCountdown">
+        Select a date
+      </p>
+
+      <input id="scienceDate" type="date">
+
+      <button onclick="setExamDate()">
+        Save Date
+      </button>
+
+    </div>
+
+    <div class="countdown-card">
+
+      <h3>Next Milestone</h3>
+
+      <div class="milestone-list">
+
+        <div class="milestone-item">
+          📚 Finish Homework
+        </div>
+
+        <div class="milestone-item">
+          📝 Revise Chapters
+        </div>
+
+        <div class="milestone-item">
+          🎯 Score Above 90%
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- PROFILE PAGE -->
+<!-- ========================= -->
+
+<section id="profile" class="page">
+
+  <h2 class="section-title">Student Profile</h2>
+
+  <p class="section-subtitle">
+    Your personal dashboard information.
+  </p>
+
+  <div class="profile-card">
+
+    <div class="profile-avatar">
+      👤
+    </div>
+
+    <h3 id="profileName">
+      Student
+    </h3>
+
+    <p>Class IX • StudySync User</p>
+
+    <div class="profile-stats">
+
+      <div class="profile-stat">
+
+        <h4 id="profileAttendance">
+          0%
+        </h4>
+
+        <span>Attendance</span>
+
+      </div>
+
+      <div class="profile-stat">
+
+        <h4 id="profileHomework">
+          0
+        </h4>
+
+        <span>Tasks</span>
+
+      </div>
+
+      <div class="profile-stat">
+
+        <h4 id="profileStreak">
+          1
+        </h4>
+
+        <span>Streak</span>
+
+      </div>
+
+    </div>
+
+    <div class="profile-actions">
+
+      <button onclick="showPage('dashboard')">
+        Go to Dashboard
+      </button>
+
+      <button onclick="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- FLOATING NOTIFICATION PANEL -->
+<!-- ========================= -->
+
+<div id="notificationPanel" class="notification-panel hidden">
+
+  <div class="panel-header">
+
+    <h3>Notifications</h3>
+
+    <button onclick="toggleNotifications()">
+      ✕
+    </button>
+
+  </div>
+
+  <div class="panel-content">
+
+    <div class="panel-item">
+      📚 Welcome to StudySync!
+    </div>
+
+    <div class="panel-item">
+      📝 Don't forget today's homework.
+    </div>
+
+    <div class="panel-item">
+      ⏱️ Start a Pomodoro session.
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-left">
+
+    <h3>StudySync</h3>
+
+    <p>
+      One Dashboard. Every Student's Daily Companion.
+    </p>
+
+  </div>
+
+  <div class="footer-right">
+
+    <span>HTML • CSS • JavaScript</span>
+
+    <span>Made for Genius Hour</span>
+
+  </div>
+
+</footer>
+
+</main>
+
+</div>
+
+<script src="script.js"></script>
+<canvas id="confetti"></canvas>
+
+</body>
+
+</html>
